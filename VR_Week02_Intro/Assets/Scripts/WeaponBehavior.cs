@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponBehavior : MonoBehaviour {
-    public float rotationSpeed = 1;
+    public float rotationSpeed = 8;
 
     private Transform _weaponPivot;
-    private Transform _trans;
+    private Transform _transform;
     private Transform _mainCamera;
 
     private void Awake() {
-        _trans = this.transform;
+        _transform = this.transform;
         _mainCamera = Camera.main.transform;
-        _weaponPivot = _trans.FindChild("WeaponPivot");
+        _weaponPivot = this.transform.FindChild("WeaponPivot");
     }
 
     // Use this for initialization
@@ -26,7 +26,12 @@ public class WeaponBehavior : MonoBehaviour {
 	}
 
     private void FixedUpdate() {
+        _transform.position = _mainCamera.position;
+
+        Quaternion _controllerTargetRotation = Quaternion.Euler(0, _mainCamera.eulerAngles.y, 0);
         Quaternion _pivotTargetRotation = Quaternion.Euler(_mainCamera.eulerAngles.x, _mainCamera.eulerAngles.y, 0);
+        _transform.rotation = Quaternion.Slerp(_transform.rotation, _controllerTargetRotation, rotationSpeed * Time.deltaTime);
         _weaponPivot.rotation = Quaternion.Slerp(_weaponPivot.rotation, _pivotTargetRotation, rotationSpeed * Time.deltaTime);
+
     }
 }
