@@ -31,6 +31,8 @@ public class MosueLook : MonoBehaviour {
             
             //rotate camera based on mouse delta speed;
             _camTrans.Rotate(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
             //unroll our camera
             _camTrans.localEulerAngles = new Vector3(_camTrans.localEulerAngles.x, _camTrans.localEulerAngles.y, 0);

@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GazeBehavior.cs" />
     <Compile Include="Assets\Scripts\MosueLook.cs" />
     <Compile Include="Assets\Scripts\WeaponBehavior.cs" />
   </ItemGroup>

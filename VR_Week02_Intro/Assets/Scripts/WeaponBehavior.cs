@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WeaponBehavior : MonoBehaviour {
     public float rotationSpeed = 8;
+    public Animator shotGunAnim;
+
+    public static bool isFire = false;
 
     private Transform _weaponPivot;
     private Transform _transform;
@@ -22,8 +25,8 @@ public class WeaponBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        shotGunAnim.SetBool("isFire", isFire);
+    }
 
     private void FixedUpdate() {
         _transform.position = _mainCamera.position;
