@@ -21,7 +21,7 @@ public class MosueLook : MonoBehaviour {
         }
 
         //render at 50% of the original quality
-        VRSettings.renderViewportScale = 0.5f;
+        VRSettings.renderViewportScale = 1f;
 	}
 	
 	// Update is called once per frame
